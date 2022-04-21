@@ -31,6 +31,7 @@ function Card(props) {
       onDragEnd={dragEnd}
     >
       {props.children}
+      <span onClick={()=> props.deleteCard(props.id)} className="delete-button">x</span>
     </div>
   );
 }

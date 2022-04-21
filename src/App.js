@@ -16,32 +16,32 @@ function App() {
       let data = [
         {
           id: "1",
-          title: "1",
+          title: "Task 1",
           status: "Not Started",
         },
         {
           id: "2",
-          title: "2",
+          title: "Task 2",
           status: "Not Started",
         },
         {
           id: "3",
-          title: "3",
+          title: "Task 3",
           status: "In Progress",
         },
         {
           id: "4",
-          title: "4",
+          title: "Task 4",
           status: "In Progress",
         },
         {
           id: "5",
-          title: "5",
+          title: "Task 5",
           status: "Completed",
         },
         {
           id: "6",
-          title: "6",
+          title: "Task 6",
           status: "Completed",
         },
       ];
@@ -65,6 +65,7 @@ function App() {
   };
 
   const addTask = (status) => {
+    if(newInput == "") return
     let data = {
       id: uuidv4(),
       title: newInput,
@@ -82,7 +83,7 @@ function App() {
     return (
       <>
         {currentActiveCard === status ? (
-          <div className="new-card">
+          <form className="new-card" onSubmit={() => addTask(status)}>
             <input
               className="input"
               value={newInput}
@@ -91,11 +92,12 @@ function App() {
               type="text"
               name="title"
             />
-            <button className="btn" onClick={() => addTask(status)}>
+            <span className="small">Press enter to add!</span>
+            {/* <button className="btn" type="submit">
               Save
-            </button>
-          </div>
-        ) : null}
+            </button> */}
+          </form>
+        ) : <p onClick={()=> handleActiveCard(status)} className="add-new">+ New</p>}
       </>
     );
   };
@@ -125,34 +127,41 @@ function App() {
     );
   };
 
+  const deleteCard = (id)=>{
+    const main_id = id.substring(5);
+    let newData = tasks.filter((task)=> task.id !== main_id)
+    localStorage.setItem('dnd-data', JSON.stringify(newData))
+    setTasks([...newData])
+  }
+
   return (
     <div className="App">
       <h3 className="heading"># Internship Assignment - Frontend</h3>
       <main className="flexbox">
-        <Board id="board-1" className="board" tasks={tasks}>
+        <Board id="board-1" className="board" tasks={tasks} setTasks={setTasks}>
           {boardHeader("Not Started")}
           {filterTaks("Not Started").map((task) => (
-            <Card id={`card-${task.id}`} className="card" draggable="true">
+            <Card id={`card-${task.id}`} className="card" draggable="true" deleteCard={deleteCard}>
               <p>{task.title}</p>
             </Card>
           ))}
           {addNewCard("Not Started")}
         </Board>
 
-        <Board id="board-2" className="board" tasks={tasks}>
+        <Board id="board-2" className="board" tasks={tasks} setTasks={setTasks}>
           {boardHeader("In Progress")}
           {filterTaks("In Progress").map((task) => (
-            <Card id={`card-${task.id}`} className="card" draggable="true">
+            <Card id={`card-${task.id}`} className="card" draggable="true" deleteCard={deleteCard}>
               <p>{task.title}</p>
             </Card>
           ))}
           {addNewCard("In Progress")}
         </Board>
 
-        <Board id="board-3" className="board" tasks={tasks}>
+        <Board id="board-3" className="board" tasks={tasks} setTasks={setTasks}>
           {boardHeader("Completed")}
           {filterTaks("Completed").map((task) => (
-            <Card id={`card-${task.id}`} className="card" draggable="true">
+            <Card id={`card-${task.id}`} className="card" draggable="true" deleteCard={deleteCard}>
               <p>{task.title}</p>
             </Card>
           ))}

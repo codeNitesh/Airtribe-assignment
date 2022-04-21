@@ -1,6 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function Board(props) {
+
+  useEffect(() => {
+   
+  }, [props.tasks])
+  
   const drop = (e) => {
     e.preventDefault();
     const card_id = e.dataTransfer.getData("card_id");
@@ -20,7 +25,8 @@ function Board(props) {
 
     card.style.display = "block";
 
-    e.target.appendChild(card);
+    // e.target.appendChild(card);
+    props.setTasks([...props.tasks])
 
     localStorage.setItem("dnd-data", JSON.stringify(props.tasks));
   };
