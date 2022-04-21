@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Airtribe-assignment/static/css/main.fb5973df.css",
-    "main.js": "/Airtribe-assignment/static/js/main.2d165bf0.js",
+    "main.css": "/Airtribe-assignment/static/css/main.605ee5e3.css",
+    "main.js": "/Airtribe-assignment/static/js/main.0100edd3.js",
     "static/js/787.ddc63995.chunk.js": "/Airtribe-assignment/static/js/787.ddc63995.chunk.js",
     "index.html": "/Airtribe-assignment/index.html",
-    "main.fb5973df.css.map": "/Airtribe-assignment/static/css/main.fb5973df.css.map",
-    "main.2d165bf0.js.map": "/Airtribe-assignment/static/js/main.2d165bf0.js.map",
+    "main.605ee5e3.css.map": "/Airtribe-assignment/static/css/main.605ee5e3.css.map",
+    "main.0100edd3.js.map": "/Airtribe-assignment/static/js/main.0100edd3.js.map",
     "787.ddc63995.chunk.js.map": "/Airtribe-assignment/static/js/787.ddc63995.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb5973df.css",
-    "static/js/main.2d165bf0.js"
+    "static/css/main.605ee5e3.css",
+    "static/js/main.0100edd3.js"
   ]
 }
